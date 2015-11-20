@@ -13,6 +13,7 @@
 		17D311E31BFDF66D00827601 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17D311E21BFDF66D00827601 /* Images.xcassets */; };
 		17D311E61BFDF66D00827601 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17D311E41BFDF66D00827601 /* LaunchScreen.xib */; };
 		17D311F21BFDF66D00827601 /* Control_FunTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D311F11BFDF66D00827601 /* Control_FunTests.m */; };
+		17E251D41BFF520800200C28 /* AIZMainViewController+AIZConstraints.m in Sources */ = {isa = PBXBuildFile; fileRef = 17E251D31BFF520800200C28 /* AIZMainViewController+AIZConstraints.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,8 @@
 		17D311EB1BFDF66D00827601 /* Control FunTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Control FunTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		17D311F01BFDF66D00827601 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17D311F11BFDF66D00827601 /* Control_FunTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Control_FunTests.m; sourceTree = "<group>"; };
+		17E251D21BFF520800200C28 /* AIZMainViewController+AIZConstraints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AIZMainViewController+AIZConstraints.h"; sourceTree = "<group>"; };
+		17E251D31BFF520800200C28 /* AIZMainViewController+AIZConstraints.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AIZMainViewController+AIZConstraints.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +89,8 @@
 				17D311E21BFDF66D00827601 /* Images.xcassets */,
 				17D311E41BFDF66D00827601 /* LaunchScreen.xib */,
 				17D311D51BFDF66D00827601 /* Supporting Files */,
+				17E251D21BFF520800200C28 /* AIZMainViewController+AIZConstraints.h */,
+				17E251D31BFF520800200C28 /* AIZMainViewController+AIZConstraints.m */,
 			);
 			path = "Control Fun";
 			sourceTree = "<group>";
@@ -215,6 +220,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17E251D41BFF520800200C28 /* AIZMainViewController+AIZConstraints.m in Sources */,
 				17D311DE1BFDF66D00827601 /* AIZMainViewController.m in Sources */,
 				17D311DB1BFDF66D00827601 /* AIZAppDelegate.m in Sources */,
 				17D311D81BFDF66D00827601 /* main.m in Sources */,
@@ -404,6 +410,7 @@
 				17D311F71BFDF66D00827601 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		17D311F81BFDF66D00827601 /* Build configuration list for PBXNativeTarget "Control FunTests" */ = {
 			isa = XCConfigurationList;
@@ -412,6 +419,7 @@
 				17D311FA1BFDF66D00827601 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

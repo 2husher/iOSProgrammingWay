@@ -7,20 +7,9 @@
 //
 
 #import "AIZMainViewController.h"
+#import "AIZMainViewController+AIZConstraints.h"
 
-@interface AIZMainViewController ()
-
-@property (nonatomic, strong) UIImageView *imageView;
-@property (nonatomic, strong) UILabel *nameLabel;
-@property (nonatomic, strong) UILabel *numberLabel;
-@property (nonatomic, strong) UITextField *nameTextField;
-@property (nonatomic, strong) UITextField *numberTextField;
-@property (nonatomic, strong) UILabel *label;
-@property (nonatomic, strong) UISlider *slider;
-@property (nonatomic, strong) UISegmentedControl *segmentedControl;
-@property (nonatomic, strong) UISwitch *leftSwitch;
-@property (nonatomic, strong) UISwitch *rightSwitch;
-@property (nonatomic, strong) UIButton *button;
+@interface AIZMainViewController () <UITextFieldDelegate, UIActionSheetDelegate>
 
 @end
 
@@ -28,8 +17,19 @@
 
 - (void)loadView
 {
-    self.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.view.backgroundColor = [UIColor greenColor];
+    UIControl *view = [[UIControl alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    view.backgroundColor = [UIColor greenColor];
+
+    [view addTarget:self
+             action:@selector(backgroundTapped:)
+   forControlEvents:UIControlEventTouchUpInside];
+
+     self.view = view;
+}
+
+- (void)backgroundTapped:(id)sender
+{
+    [self.view endEditing:YES];
 }
 
 - (void)viewDidLoad
@@ -64,32 +64,6 @@
     [self.view addSubview:self.imageView];
 }
 
-- (void)addImageViewConstraints
-{
-    self.imageView.translatesAutoresizingMaskIntoConstraints = NO;
-
-    NSLayoutConstraint *horizontalConstraints =
-        [NSLayoutConstraint constraintWithItem:self.imageView
-                                     attribute:NSLayoutAttributeCenterX
-                                     relatedBy:NSLayoutRelationEqual
-                                        toItem:self.view
-                                     attribute:NSLayoutAttributeCenterX
-                                    multiplier:1.0f
-                                      constant:0.0f];
-
-    [self.view addConstraints:@[horizontalConstraints]];
-
-    NSDictionary *nameMap = @{ @"imageView" : self.imageView };
-
-    NSArray *verticalConstraints =
-        [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-80-[imageView]"
-                                                options:0
-                                                metrics:nil
-                                                  views:nameMap];
-
-    [self.view addConstraints:verticalConstraints];
-}
-
 - (void)addLabels
 {
     self.nameLabel = [[UILabel alloc] initWithFrame:CGRectZero];
@@ -108,125 +82,28 @@
 
 }
 
-- (void)addLabelsConstraints
-{
-    self.nameLabel.translatesAutoresizingMaskIntoConstraints   = NO;
-    self.numberLabel.translatesAutoresizingMaskIntoConstraints = NO;
-
-    [self.nameLabel setContentHuggingPriority:300.0f forAxis:UILayoutConstraintAxisHorizontal];
-    [self.numberLabel setContentHuggingPriority:300.0f forAxis:UILayoutConstraintAxisHorizontal];
-
-    NSDictionary *nameMap = @{ @"imageView" : self.imageView,
-                               @"nameLabel" : self.nameLabel,
-                               @"numberLabel" : self.numberLabel };
-
-    NSArray *verticalConstraints =
-        [NSLayoutConstraint constraintsWithVisualFormat:@"V:[imageView]-50-[nameLabel]"
-                                                options:0
-                                                metrics:nil
-                                                  views:nameMap];
-
-    [self.view addConstraints:verticalConstraints];
-
-    NSArray *horizontalNameLabelConstraints =
-    [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[numberLabel]"
-                                            options:0
-                                            metrics:nil
-                                              views:nameMap];
-
-    [self.view addConstraints:horizontalNameLabelConstraints];
-
-    NSLayoutConstraint *horizontalNumberLabelConstraints =
-        [NSLayoutConstraint constraintWithItem:self.numberLabel
-                                     attribute:NSLayoutAttributeTrailing
-                                     relatedBy:NSLayoutRelationEqual
-                                        toItem:self.nameLabel
-                                     attribute:NSLayoutAttributeTrailing
-                                    multiplier:1.0f
-                                      constant:0.0f];
-
-    [self.view addConstraints:@[horizontalNumberLabelConstraints]];
-}
-
 - (void)addTextFields
 {
     self.nameTextField = [[UITextField alloc] initWithFrame:CGRectZero];
-//    self.nameTextField.placeholder = @"Hello 1127tg5jdjkjsljfalsjdflajdfljalsdfjlajf";
+    self.nameTextField.placeholder = @"Type in a name";
     self.nameTextField.borderStyle = UITextBorderStyleRoundedRect;
+    self.nameTextField.returnKeyType = UIReturnKeyDone;
+
+    self.nameTextField.delegate = self;
 
     self.numberTextField = [[UITextField alloc] initWithFrame:CGRectZero];
-//    self.numberTextField.placeholder = @"Bye";
+    self.numberTextField.placeholder = @"Type in a number";
     self.numberTextField.borderStyle = UITextBorderStyleRoundedRect;
+    self.numberTextField.keyboardType = UIKeyboardTypeNumberPad;
 
     [self.view addSubview:self.nameTextField];
     [self.view addSubview:self.numberTextField];
 }
 
-- (void)addTextFieldsConstraints
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    self.nameTextField.translatesAutoresizingMaskIntoConstraints   = NO;
-    self.numberTextField.translatesAutoresizingMaskIntoConstraints = NO;
-
-    NSLayoutConstraint *verticalNameTextFieldConstraints =
-        [NSLayoutConstraint constraintWithItem:self.nameTextField
-                                     attribute:NSLayoutAttributeBaseline
-                                     relatedBy:NSLayoutRelationEqual
-                                        toItem:self.nameLabel
-                                     attribute:NSLayoutAttributeBaseline
-                                    multiplier:1.0f
-                                      constant:0.0f];
-
-    NSLayoutConstraint *verticalNumberTextFieldConstraints =
-        [NSLayoutConstraint constraintWithItem:self.numberTextField
-                                     attribute:NSLayoutAttributeBaseline
-                                     relatedBy:NSLayoutRelationEqual
-                                        toItem:self.numberLabel
-                                     attribute:NSLayoutAttributeBaseline
-                                    multiplier:1.0f
-                                      constant:0.0f];
-
-    [self.view addConstraints:@[verticalNameTextFieldConstraints,
-                                verticalNumberTextFieldConstraints]];
-
-    NSDictionary *nameMap = @{ @"nameLabel" : self.nameLabel,
-                               @"numberLabel" : self.numberLabel,
-                               @"nameTextField" : self.nameTextField,
-                               @"numberTextField" : self.numberTextField };
-
-    NSArray *horizontalNameTextFieldConstraints_1 =
-        [NSLayoutConstraint constraintsWithVisualFormat:@"H:[nameTextField]-|"
-                                                options:0
-                                                metrics:nil
-                                                  views:nameMap];
-
-    [self.view addConstraints:horizontalNameTextFieldConstraints_1];
-
-    NSArray *horizontalNumberTextFieldConstraints =
-        [NSLayoutConstraint constraintsWithVisualFormat:@"H:[numberLabel]-[numberTextField]-|"
-                                                options:0
-                                                metrics:nil
-                                                  views:nameMap];
-
-    [self.view addConstraints:horizontalNumberTextFieldConstraints];
-
-    NSArray *verticalConstraints =
-        [NSLayoutConstraint constraintsWithVisualFormat:@"V:[nameTextField]-[numberTextField]"
-                                                options:0
-                                                metrics:nil
-                                                  views:nameMap];
-
-    [self.view addConstraints:verticalConstraints];
-
-    NSLayoutConstraint *horizontalNameTextFieldConstraints_2 =
-    [NSLayoutConstraint constraintWithItem:self.nameTextField
-                                 attribute:NSLayoutAttributeLeading
-                                 relatedBy:NSLayoutRelationEqual
-                                    toItem:self.numberTextField
-                                 attribute:NSLayoutAttributeLeading
-                                multiplier:1.0f
-                                  constant:0.0f];
-
-    [self.view addConstraints:@[horizontalNameTextFieldConstraints_2]];
+    [textField resignFirstResponder];
+    return YES;
 }
 
 - (void)addLabelAndSlider
@@ -237,78 +114,53 @@
     [self.label sizeToFit];
 
     self.slider = [[UISlider alloc] initWithFrame:CGRectZero];
+    self.slider.minimumValue = 0.0f;
+    self.slider.maximumValue = 100.0f;
+    self.slider.value = self.slider.maximumValue / 2.0f;
+
+    self.label.text = @"50";
+
+    [self.slider addTarget:self
+                    action:@selector(sliderChanged:)
+          forControlEvents:UIControlEventValueChanged];
 
     [self.view addSubview:self.label];
     [self.view addSubview:self.slider];
 }
 
-- (void)addLabelAndSliderConstraints
+- (void)sliderChanged:(UISlider *)sender
 {
-    self.label.translatesAutoresizingMaskIntoConstraints  = NO;
-    self.slider.translatesAutoresizingMaskIntoConstraints = NO;
-
-    NSDictionary *nameMap = @{ @"numberLabel" : self.numberLabel,
-                               @"label" : self.label,
-                               @"slider" : self.slider };
-
-    NSArray *verticalLabelConstraints =
-        [NSLayoutConstraint constraintsWithVisualFormat:@"V:[numberLabel]-50-[label]"
-                                                options:0
-                                                metrics:nil
-                                                  views:nameMap];
-
-    [self.view addConstraints:verticalLabelConstraints];
-
-    NSLayoutConstraint *verticalSliderConstraints =
-        [NSLayoutConstraint constraintWithItem:self.label
-                                     attribute:NSLayoutAttributeCenterY
-                                     relatedBy:NSLayoutRelationEqual
-                                        toItem:self.slider
-                                     attribute:NSLayoutAttributeCenterY
-                                    multiplier:1.0f
-                                      constant:0.0f];
-
-    [self.view addConstraints:@[verticalSliderConstraints]];
-
-    NSArray *horizontalConstraints =
-        [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[label]-[slider]-|"
-                                                options:0
-                                                metrics:nil
-                                                  views:nameMap];
-
-
-    [self.view addConstraints:horizontalConstraints];
+    NSInteger progress = lround(sender.value);
+    self.label.text = [NSString stringWithFormat:@"%ld", progress];
 }
 
 - (void)addSegmentedControl
 {
     self.segmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"Switches", @"Button"]];
 
+    [self.segmentedControl addTarget:self
+                              action:@selector(toggleControls:)
+                    forControlEvents:UIControlEventValueChanged];
+
+    [self.segmentedControl setSelectedSegmentIndex:0];
+
     [self.view addSubview:self.segmentedControl];
 }
 
-- (void)addSegmentedControlConstraints
+- (void)toggleControls:(UISegmentedControl *)sender
 {
-    self.segmentedControl.translatesAutoresizingMaskIntoConstraints = NO;
-
-    NSDictionary *nameMap = @{ @"label" : self.label,
-                               @"segmentedControl" : self.segmentedControl };
-
-    NSArray *verticalConstraints =
-        [NSLayoutConstraint constraintsWithVisualFormat:@"V:[label]-50-[segmentedControl]"
-                                                options:0
-                                                metrics:nil
-                                                  views:nameMap];
-
-    [self.view addConstraints:verticalConstraints];
-
-    NSArray *horizontalConstraints =
-        [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[segmentedControl]-|"
-                                                options:0
-                                                metrics:nil
-                                                  views:nameMap];
-
-    [self.view addConstraints:horizontalConstraints];
+    if (sender.selectedSegmentIndex == 0)
+    {
+        self.leftSwitch.hidden = NO;
+        self.rightSwitch.hidden = NO;
+        self.button.hidden = YES;
+    }
+    else if (sender.selectedSegmentIndex == 1)
+    {
+        self.leftSwitch.hidden = YES;
+        self.rightSwitch.hidden = YES;
+        self.button.hidden = NO;
+    }
 }
 
 - (void)addSwitchesAndButton
@@ -316,80 +168,71 @@
     self.leftSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
     self.rightSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
 
-    self.button = [UIButton buttonWithType:UIButtonTypeSystem];
-    [self.button setTitle:@"Button" forState:UIControlStateNormal];
-//    self.button.frame = CGRectZero;
-//    self.button.backgroundColor = [UIColor grayColor];
+    [self.leftSwitch addTarget:self
+                        action:@selector(switchChanged:)
+              forControlEvents:UIControlEventValueChanged];
+
+    [self.rightSwitch addTarget:self
+                         action:@selector(switchChanged:)
+               forControlEvents:UIControlEventValueChanged];
+
+    self.button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.button setBackgroundImage:[UIImage imageNamed:@"whiteButton"] forState:UIControlStateNormal];
+    [self.button setBackgroundImage:[UIImage imageNamed:@"blueButton"] forState:UIControlStateHighlighted];
+    [self.button setTitle:@"Do Something" forState:UIControlStateNormal];
+
+    self.button.hidden = @"YES";
+    [self.button addTarget:self
+                    action:@selector(buttonPressed:)
+          forControlEvents:UIControlEventTouchUpInside];
 
     [self.view addSubview:self.leftSwitch];
     [self.view addSubview:self.rightSwitch];
     [self.view addSubview:self.button];
 }
 
-- (void)addSwitchesAndButtonConstraints
+- (void)switchChanged:(UISwitch *)sender
 {
-    self.leftSwitch.translatesAutoresizingMaskIntoConstraints  = NO;
-    self.rightSwitch.translatesAutoresizingMaskIntoConstraints = NO;
-    self.button.translatesAutoresizingMaskIntoConstraints = NO;
+    BOOL settings = sender.isOn;
+    [self.leftSwitch setOn:settings animated:YES];
+    [self.rightSwitch setOn:settings animated:YES];
+}
 
-    NSDictionary *nameMap = @{ @"segmentedControl" : self.segmentedControl,
-                               @"rightSwitch" : self.rightSwitch,
-                               @"leftSwitch" : self.leftSwitch,
-                               @"button" : self.button };
+- (void)buttonPressed:(UIButton *)sender
+{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc]
+                                  initWithTitle:@"Are you sure?"
+                                  delegate:self
+                                  cancelButtonTitle:@"No Way!"
+                                  destructiveButtonTitle:@"Yes, I'm Sure!"
+                                  otherButtonTitles: nil];
 
-    NSArray *verticalLeftSwitchConstraints =
-        [NSLayoutConstraint constraintsWithVisualFormat:@"V:[segmentedControl]-[leftSwitch]"
-                                                options:0
-                                                metrics:nil
-                                                  views:nameMap];
+    [actionSheet showInView:self.view];
+}
 
-    [self.view addConstraints:verticalLeftSwitchConstraints];
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex != [actionSheet cancelButtonIndex])
+    {
+        NSString *msg = nil;
 
-    NSLayoutConstraint *verticalRightSwitchConstraints =
-        [NSLayoutConstraint constraintWithItem:self.rightSwitch
-                                     attribute:NSLayoutAttributeCenterY
-                                     relatedBy:NSLayoutRelationEqual
-                                        toItem:self.leftSwitch
-                                     attribute:NSLayoutAttributeCenterY
-                                    multiplier:1.0f
-                                      constant:0.0f];
+        if (self.nameTextField.text.length > 0)
+        {
+            msg = [NSString stringWithFormat:@"You can breathe easy, %@, everything went OK", self.nameTextField.text];
+        }
+        else
+        {
+            msg = @"You can breathe easy, everything went OK";
+        }
 
-    [self.view addConstraints:@[verticalRightSwitchConstraints]];
-
-    NSArray *horizontalRightSwitchConstraints =
-        [NSLayoutConstraint constraintsWithVisualFormat:@"H:[rightSwitch]-|"
-                                                options:0
-                                                metrics:nil
-                                                  views:nameMap];
-
-    [self.view addConstraints:horizontalRightSwitchConstraints];
-
-    NSArray *horizontalLeftSwitchConstraints =
-        [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[leftSwitch]"
-                                                options:0
-                                                metrics:nil
-                                                  views:nameMap];
-
-    [self.view addConstraints:horizontalLeftSwitchConstraints];
-
-    NSLayoutConstraint *verticalButtonConstraints =
-        [NSLayoutConstraint constraintWithItem:self.button
-                                     attribute:NSLayoutAttributeCenterY
-                                     relatedBy:NSLayoutRelationEqual
-                                        toItem:self.leftSwitch
-                                     attribute:NSLayoutAttributeCenterY
-                                    multiplier:1.0f
-                                      constant:0.0f];
-
-    [self.view addConstraints:@[verticalButtonConstraints]];
-
-    NSArray *horizontalButtonConstraints =
-        [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[button]-|"
-                                                options:0
-                                                metrics:nil
-                                                  views:nameMap];
-
-    [self.view addConstraints:horizontalButtonConstraints];
+        UIAlertView *alertView = [[UIAlertView alloc]
+                                  initWithTitle:@"Something was done"
+                                  message:msg
+                                  delegate:self
+                                  cancelButtonTitle:@"Phew!"
+                                  otherButtonTitles: nil];
+        [alertView show];
+    }
 }
 
 @end
