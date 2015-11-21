@@ -13,7 +13,12 @@
 		17D311E31BFDF66D00827601 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17D311E21BFDF66D00827601 /* Images.xcassets */; };
 		17D311E61BFDF66D00827601 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17D311E41BFDF66D00827601 /* LaunchScreen.xib */; };
 		17D311F21BFDF66D00827601 /* Control_FunTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D311F11BFDF66D00827601 /* Control_FunTests.m */; };
-		17E251D41BFF520800200C28 /* AIZMainViewController+AIZConstraints.m in Sources */ = {isa = PBXBuildFile; fileRef = 17E251D31BFF520800200C28 /* AIZMainViewController+AIZConstraints.m */; };
+		17D6120E1C00616800797B51 /* AIZMainViewController+AIZImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D6120D1C00616800797B51 /* AIZMainViewController+AIZImageView.m */; };
+		17D612111C00624300797B51 /* AIZMainViewController+AIZLabels.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D612101C00624300797B51 /* AIZMainViewController+AIZLabels.m */; };
+		17D612141C0062B100797B51 /* AIZMainViewController+AIZTextFields.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D612131C0062B100797B51 /* AIZMainViewController+AIZTextFields.m */; };
+		17D612171C00631E00797B51 /* AIZMainViewController+AIZLabelAndSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D612161C00631E00797B51 /* AIZMainViewController+AIZLabelAndSlider.m */; };
+		17D6121A1C0063B300797B51 /* AIZMainViewController+AIZSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D612191C0063B300797B51 /* AIZMainViewController+AIZSegmentedControl.m */; };
+		17D6121D1C00642B00797B51 /* AIZMainViewController+AIZSwitchesAndButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D6121C1C00642B00797B51 /* AIZMainViewController+AIZSwitchesAndButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,8 +44,18 @@
 		17D311EB1BFDF66D00827601 /* Control FunTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Control FunTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		17D311F01BFDF66D00827601 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17D311F11BFDF66D00827601 /* Control_FunTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Control_FunTests.m; sourceTree = "<group>"; };
-		17E251D21BFF520800200C28 /* AIZMainViewController+AIZConstraints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AIZMainViewController+AIZConstraints.h"; sourceTree = "<group>"; };
-		17E251D31BFF520800200C28 /* AIZMainViewController+AIZConstraints.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AIZMainViewController+AIZConstraints.m"; sourceTree = "<group>"; };
+		17D6120C1C00616800797B51 /* AIZMainViewController+AIZImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AIZMainViewController+AIZImageView.h"; sourceTree = "<group>"; };
+		17D6120D1C00616800797B51 /* AIZMainViewController+AIZImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AIZMainViewController+AIZImageView.m"; sourceTree = "<group>"; };
+		17D6120F1C00624300797B51 /* AIZMainViewController+AIZLabels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AIZMainViewController+AIZLabels.h"; sourceTree = "<group>"; };
+		17D612101C00624300797B51 /* AIZMainViewController+AIZLabels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AIZMainViewController+AIZLabels.m"; sourceTree = "<group>"; };
+		17D612121C0062B100797B51 /* AIZMainViewController+AIZTextFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AIZMainViewController+AIZTextFields.h"; sourceTree = "<group>"; };
+		17D612131C0062B100797B51 /* AIZMainViewController+AIZTextFields.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AIZMainViewController+AIZTextFields.m"; sourceTree = "<group>"; };
+		17D612151C00631E00797B51 /* AIZMainViewController+AIZLabelAndSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AIZMainViewController+AIZLabelAndSlider.h"; sourceTree = "<group>"; };
+		17D612161C00631E00797B51 /* AIZMainViewController+AIZLabelAndSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AIZMainViewController+AIZLabelAndSlider.m"; sourceTree = "<group>"; };
+		17D612181C0063B300797B51 /* AIZMainViewController+AIZSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AIZMainViewController+AIZSegmentedControl.h"; sourceTree = "<group>"; };
+		17D612191C0063B300797B51 /* AIZMainViewController+AIZSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AIZMainViewController+AIZSegmentedControl.m"; sourceTree = "<group>"; };
+		17D6121B1C00642B00797B51 /* AIZMainViewController+AIZSwitchesAndButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AIZMainViewController+AIZSwitchesAndButton.h"; sourceTree = "<group>"; };
+		17D6121C1C00642B00797B51 /* AIZMainViewController+AIZSwitchesAndButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AIZMainViewController+AIZSwitchesAndButton.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,8 +104,18 @@
 				17D311E21BFDF66D00827601 /* Images.xcassets */,
 				17D311E41BFDF66D00827601 /* LaunchScreen.xib */,
 				17D311D51BFDF66D00827601 /* Supporting Files */,
-				17E251D21BFF520800200C28 /* AIZMainViewController+AIZConstraints.h */,
-				17E251D31BFF520800200C28 /* AIZMainViewController+AIZConstraints.m */,
+				17D6120C1C00616800797B51 /* AIZMainViewController+AIZImageView.h */,
+				17D6120D1C00616800797B51 /* AIZMainViewController+AIZImageView.m */,
+				17D6120F1C00624300797B51 /* AIZMainViewController+AIZLabels.h */,
+				17D612101C00624300797B51 /* AIZMainViewController+AIZLabels.m */,
+				17D612121C0062B100797B51 /* AIZMainViewController+AIZTextFields.h */,
+				17D612131C0062B100797B51 /* AIZMainViewController+AIZTextFields.m */,
+				17D612151C00631E00797B51 /* AIZMainViewController+AIZLabelAndSlider.h */,
+				17D612161C00631E00797B51 /* AIZMainViewController+AIZLabelAndSlider.m */,
+				17D612181C0063B300797B51 /* AIZMainViewController+AIZSegmentedControl.h */,
+				17D612191C0063B300797B51 /* AIZMainViewController+AIZSegmentedControl.m */,
+				17D6121B1C00642B00797B51 /* AIZMainViewController+AIZSwitchesAndButton.h */,
+				17D6121C1C00642B00797B51 /* AIZMainViewController+AIZSwitchesAndButton.m */,
 			);
 			path = "Control Fun";
 			sourceTree = "<group>";
@@ -220,9 +245,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17E251D41BFF520800200C28 /* AIZMainViewController+AIZConstraints.m in Sources */,
+				17D612141C0062B100797B51 /* AIZMainViewController+AIZTextFields.m in Sources */,
+				17D612171C00631E00797B51 /* AIZMainViewController+AIZLabelAndSlider.m in Sources */,
+				17D612111C00624300797B51 /* AIZMainViewController+AIZLabels.m in Sources */,
 				17D311DE1BFDF66D00827601 /* AIZMainViewController.m in Sources */,
+				17D6121D1C00642B00797B51 /* AIZMainViewController+AIZSwitchesAndButton.m in Sources */,
+				17D6121A1C0063B300797B51 /* AIZMainViewController+AIZSegmentedControl.m in Sources */,
 				17D311DB1BFDF66D00827601 /* AIZAppDelegate.m in Sources */,
+				17D6120E1C00616800797B51 /* AIZMainViewController+AIZImageView.m in Sources */,
 				17D311D81BFDF66D00827601 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
