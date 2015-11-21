@@ -17,6 +17,7 @@
 		17D612901C008AB200797B51 /* AIZDoubleComponentPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D6128F1C008AB200797B51 /* AIZDoubleComponentPickerViewController.m */; };
 		17D612931C008AD000797B51 /* AIZDependentComponentPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D612921C008AD000797B51 /* AIZDependentComponentPickerViewController.m */; };
 		17D612961C008AE300797B51 /* AIZCustomPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D612951C008AE300797B51 /* AIZCustomPickerViewController.m */; };
+		17D612981C00DE4E00797B51 /* statedictionary.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17D612971C00DE4E00797B51 /* statedictionary.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		17D612921C008AD000797B51 /* AIZDependentComponentPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIZDependentComponentPickerViewController.m; sourceTree = "<group>"; };
 		17D612941C008AE300797B51 /* AIZCustomPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIZCustomPickerViewController.h; sourceTree = "<group>"; };
 		17D612951C008AE300797B51 /* AIZCustomPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIZCustomPickerViewController.m; sourceTree = "<group>"; };
+		17D612971C00DE4E00797B51 /* statedictionary.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = statedictionary.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 		17D612621C00870400797B51 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				17D612971C00DE4E00797B51 /* statedictionary.plist */,
 				17D612631C00870400797B51 /* Info.plist */,
 				17D612641C00870400797B51 /* main.m */,
 			);
@@ -216,6 +219,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17D612981C00DE4E00797B51 /* statedictionary.plist in Resources */,
 				17D612731C00870400797B51 /* LaunchScreen.xib in Resources */,
 				17D612701C00870400797B51 /* Images.xcassets in Resources */,
 			);
