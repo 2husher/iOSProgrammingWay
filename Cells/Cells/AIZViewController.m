@@ -14,6 +14,7 @@ static NSString *TableViewCellIdentifier = @"SimpleTableIdentifier";
 @interface AIZViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSArray *computers;
 
 @end
 
@@ -24,6 +25,12 @@ static NSString *TableViewCellIdentifier = @"SimpleTableIdentifier";
     [super viewDidLoad];
 
     [self addMyTableView];
+
+    self.computers = @[@{@"Name" : @"MacBook Air", @"Color" : @"Silver"},
+                       @{@"Name" : @"MacBook Pro", @"Color" : @"Silver"},
+                       @{@"Name" : @"iMac", @"Color" : @"Silver"},
+                       @{@"Name" : @"Mac Mini", @"Color" : @"Silver"},
+                       @{@"Name" : @"Mac Pro", @"Color" : @"Black"}];
 }
 
 - (void) addMyTableView
@@ -46,17 +53,21 @@ static NSString *TableViewCellIdentifier = @"SimpleTableIdentifier";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return [self.computers count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = nil;
+    AIZCustomTableViewCell *cell = nil;
 
     cell = [tableView dequeueReusableCellWithIdentifier:TableViewCellIdentifier
                                            forIndexPath:indexPath];
-    
+
+    NSDictionary *rowData = self.computers[indexPath.row];
+
+    cell.name  = rowData[@"Name"];
+    cell.color = rowData[@"Color"];
     
     return cell;
 }
